@@ -4,7 +4,10 @@ lib = File.expand_path('../../flickraw/lib/', __FILE__)
 $:.unshift lib unless $:.include?(lib)
 require "flickraw"
 
-JSON.load(open("#{ENV['HOME']}/.flickraw.json")).each {|k,v| FlickRaw.send "#{k}=".to_sym, v} rescue
+begin
+JSON.load(open("#{ENV['HOME']}/.flickraw.json")).each {|k,v| FlickRaw.send :"#{k}=", v} 
+rescue
+end
 
 open("flickraw-cached.rb", "w") {|f|
   f.puts %{require 'flickraw'}
