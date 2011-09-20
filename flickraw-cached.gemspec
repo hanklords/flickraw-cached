@@ -1,7 +1,5 @@
 # -*- encoding: utf-8 -*-
 
-lib = File.expand_path('../../flickraw/lib/', __FILE__)
-$:.unshift lib unless $:.include?(lib)
 require "flickraw"
 
 begin
