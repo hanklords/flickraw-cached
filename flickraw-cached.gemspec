@@ -2,10 +2,8 @@
 
 require "flickraw"
 
-begin
-JSON.load(open("#{ENV['HOME']}/.flickraw.json")).each {|k,v| FlickRaw.send :"#{k}=", v} 
-rescue
-end
+FlickRaw.api_key = ENV['FLICKRAW_API_KEY']
+FlickRaw.shared_secret = ENV['FLICKRAW_SHARED_SECRET']
 
 open("flickraw-cached.rb", "w") {|f|
   f.puts %{require 'flickraw'}
